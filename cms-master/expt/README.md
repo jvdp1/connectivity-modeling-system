@@ -39,6 +39,12 @@ cd ..
 ./cms example
 ```
 
+If `MPI` is enabled, run the `cms` test as follows:
+
+```bash
+mpirun -n 2 ./cms example
+```
+
 In this case, cms is run passively for 3 particles released on 3 consecutive days, with no turbulence or IBM.
 If the test has worked correctly, you should get an output file called traj_file_1.nc in /expt_example/output.
 An example output file for the test is given in /expt_example/example_output called traj_file_example.nc with which to compare your results.
