@@ -5,26 +5,39 @@ To check that your installation of CMS has worked correctly, you can also use th
 
 2. Create links to the executables cms and getdata by typing:
 
-	> ln -s ../src/cms cms        
-	> ln -s ../src/getdata getdata
+```bash
+ln -s ../src/cms cms
+ln -s ../src/getdata getdata
+```
 
 3. Run getdata to download oceanographic files needed to run the test by typing:
 
-	> ./getdata getdata_example 1
+```bash
+./getdata getdata_example 1
+```
 
 This will download and format 13 days (1-13 Jan 2016) of surface ocean current data from the HYCOM global analysis (https://hycom.org/data/glbu0pt08/expt-91pt1). 
 The resulting formatted nest files will be placed in a new directory: /expt_getdata_example/nests.
 
 4. Either move or create a link to the nest files in /expt_example by typing:
 
-	> mv -r expt_getdata_example/nests expt_example/nests      
+```bash
+mv expt_getdata_example/nests expt_example/nests      
+```
+
 or....
-	> cd expt_example
-	> ln -s ../expt_getdata_example/nests nests
+
+```bash
+cd expt_example
+ln -s ../expt_getdata_example/nests nests
+cd ..
+```
 
 5. Run the cms test using the example input files in /input_example by typing:
 
-	> ./cms example
+```bash
+./cms example
+```
 
 In this case, cms is run passively for 3 particles released on 3 consecutive days, with no turbulence or IBM.
 If the test has worked correctly, you should get an output file called traj_file_1.nc in /expt_example/output.

@@ -1,7 +1,7 @@
 # Makefile
 
-NETINC=/usr/lib64/gfortran/modules
-NETLIB=/usr/lib64
+NETINC=/shared/eb_apps/software/netCDF-Fortran/4.6.0-gompi-2022b/include
+NETLIB=/shared/eb_apps/software/netCDF-Fortran/4.6.0-gompi-2022b/lib
 
 #the Fortran compiler to create object files
 FC            = gfortran
