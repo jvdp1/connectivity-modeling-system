@@ -22,7 +22,7 @@ avoidcoast           = .true.
 backward             = .false.
 !====================================================================!
 !Output files in ASCII instead of netCDF
-ascii                = .true.
+ascii                = .false.
 !====================================================================!
 !Flag to limit particle vertical movement to upper layer
 upperlevelsurface    = .true.

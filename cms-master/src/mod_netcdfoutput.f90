@@ -141,7 +141,7 @@ SUBROUTINE output_create(ncfname, numTime)
 
 !add global attributes
  CALL ncheck(nf90_put_att(ncId,nf90_global,"nnests", nnests),ncfname)
- CALL ncheck(nf90_put_att(ncId,nf90_global,"timeMax", timeMax),ncfname)
+ CALL ncheck(nf90_put_att(ncId,nf90_global,"timeMax", int(timeMax, kind=int_kind)),ncfname)
  CALL ncheck(nf90_put_att(ncId,nf90_global,"timeStep", timeStep),ncfname)
  CALL ncheck(nf90_put_att(ncId,nf90_global,"releaseFilename", releaseFilename),ncfname)
  IF (turb) THEN
