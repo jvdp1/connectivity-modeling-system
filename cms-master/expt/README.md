@@ -1,55 +1,67 @@
-This directory contains example input files for running getdata and cms, which can be adapted for your own use.
-To check that your installation of CMS has worked correctly, you can also use these files to run a simple test:
+# Example running CMS
 
-1. Make sure you are in the directory /expt. You should see the directories /input_getdata_example and /input_example.
+This directory contains example input files for running `getdata` and `cms`, which can be adapted for your own use.
+To check that your installation of CMS has worked correctly, you can also use these files to run a simple test.
 
-2. Create links to the executables cms and getdata by typing:
+## Working directory
+
+First, make sure you are in the directory expt/.
+You should see the directories input_getdata_example/ and input_example/.
+
+## Create links
+
+Second, create links to the executables `cms` and `getdata` by typing:
 
 ```bash
 ln -s ../src/cms cms
 ln -s ../src/getdata getdata
 ```
 
-3. Run getdata to download oceanographic files needed to run the test by typing:
+## Run `getdata`
+
+Run `getdata` to download oceanographic files needed to run the test by typing:
 
 ```bash
 ./getdata getdata_example 1
 ```
 
-This will download and format 13 days (1-13 Jan 2016) of surface ocean current data from the HYCOM global analysis (https://hycom.org/data/glbu0pt08/expt-91pt1). 
-The resulting formatted nest files will be placed in a new directory: /expt_getdata_example/nests.
+This will download and format 13 days (1-13 Jan 2016) of surface ocean current data from the [HYCOM global analysis](https://hycom.org/data/glbu0pt08/expt-91pt1).
+The resulting formatted nest files will be placed in a new directory: expt_getdata_example/nests/.
 
-4. Either move or create a link to the nest files in /expt_example by typing:
+## Move nest files
+
+Either move or create a link to the nest files in expt_example/ by typing:
 
 ```bash
 mv expt_getdata_example/nests expt_example/nests      
 ```
 
-or....
+or:
 
 ```bash
-cd expt_example
-ln -s ../expt_getdata_example/nests nests
-cd ..
+ln -s expt_getdata_example/nests expt_example/nests
 ```
 
-5. Run the cms test using the example input files in /input_example by typing:
+## Run `cms`
+
+Run `cms` using the example input files in input_example/ by typing:
 
 ```bash
 ./cms example
 ```
 
-If `MPI` is enabled, run the `cms` test as follows:
+If MPI is enabled, run `cms` like this:
 
 ```bash
 mpirun -n 2 ./cms example
 ```
 
-In this case, cms is run passively for 3 particles released on 3 consecutive days, with no turbulence or IBM.
-If the test has worked correctly, you should get an output file called traj_file_1.nc in /expt_example/output.
-An example output file for the test is given in /expt_example/example_output called traj_file_example.nc with which to compare your results.
+In this case, `cms` is run passively for 3 particles released on 3 consecutive days, with no turbulence or IBM.
+If the test has worked correctly, you should get an output file called traj_file_1.nc in expt_example/output/.
+An example output file for the test is given in expt_example/example_output/ called traj_file_example.nc with which to compare your results.
 In this case, all 3 particles leave the nest domain at its northern edge (30 degrees N), giving exit code -1:
 
+```
 lat:
 25			25			25
 26.0429439544678	25.9986038208008	25.9510612487793
@@ -80,6 +92,7 @@ exitcode:
 -1
 -1
 -1
+```
 
-Note there may be small differences in lat/lon due to your operating system. 
-You can also plot the output using cms-master/postproc/draw_traj_netcdf.m and compare with the example given at /expt_example/output/traj_file_example.jpg
+Note that there may be small differences in lat/lon between operating systems or compilers used.
+You can also plot the output using cms-master/postproc/draw_traj_netcdf.m and compare with the example given at /expt_example/output/traj_file_example.jpg.
